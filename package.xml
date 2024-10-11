@@ -4,7 +4,7 @@
   <name>kuams_sim</name>
   <version>0.0.0</version>
   <description>The kuams_sim package</description>
-  <maintainer email="kazulab10969@gmail.com">kzm784</maintainer>
+  <maintainer email="kazulab10969@outlook.jp">kzm784</maintainer>
   <license>MIT</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
