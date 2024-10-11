@@ -3,16 +3,35 @@
 <package format="3">
   <name>kuams_sim</name>
   <version>0.0.0</version>
-  <description>kuams_sim</description>
-  <maintainer email="kazulab10969@outlook.jp">kazuma</maintainer>
+  <description>The kuams_sim package</description>
+  <maintainer email="kazulab10969@gmail.com">kzm784</maintainer>
   <license>MIT</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>gazebo_ros_pkgs</depend>
+  <depend>sensor_msgs</depend>
+
+  <exec_depend>diff_drive_controller</exec_depend>
+  <exec_depend>gazebo_ros2_control</exec_depend>
+  <exec_depend>gazebo_ros</exec_depend>
+  <exec_depend>ign_ros2_control</exec_depend>
+  <exec_depend>joint_state_broadcaster</exec_depend>
+  <exec_depend>joint_state_publisher</exec_depend>
+  <exec_depend>nav2_bringup</exec_depend>
+  <exec_depend>navigation2</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>ros_ign</exec_depend>
+  <exec_depend>ros2_control</exec_depend>
+  <exec_depend>ros2_controllers</exec_depend>
+  <exec_depend>slam_toolbox</exec_depend>
+  <exec_depend>xacro</exec_depend>
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
 
   <export>
     <build_type>ament_cmake</build_type>
+    <gazebo_ros gazebo_plugin_path="${prefix}/lib"/>
+    <gazebo_ros gazebo_model_path="${prefix}/models"/>
   </export>
 </package>
