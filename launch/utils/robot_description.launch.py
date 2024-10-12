@@ -28,7 +28,7 @@ def generate_launch_description():
         FindPackageShare("kuams_sim"),
         'robots',
         # 'vkuams.urdf.xacro'
-        'robots.xacro',
+        'robot.xacro'
     ])
     robot_description_content = Command(
         ['xacro', ' ', xacro_file, ' ',
