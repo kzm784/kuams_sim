@@ -26,8 +26,7 @@ def generate_launch_description():
 
     xacro_file = PathJoinSubstitution([
         FindPackageShare("kuams_sim"),
-        'robots',
-        # 'vkuams.urdf.xacro'
+        'xacro',
         'robot.xacro'
     ])
     robot_description_content = Command(
