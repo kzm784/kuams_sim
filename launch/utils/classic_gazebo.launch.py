@@ -32,7 +32,7 @@ def generate_launch_description():
             pathsep,
             '/usr/share/gazebo-11',
             pathsep,
-            PathJoinSubstitution([pkg_kuams_sim, 'worlds', 'classic'])]
+            PathJoinSubstitution([pkg_kuams_sim, 'worlds'])]
     )
 
     gazebo = IncludeLaunchDescription(
