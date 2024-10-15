@@ -4,6 +4,9 @@
 	<xacro:include filename="lrf.xacro" />
 	<xacro:include filename="wheel.xacro" />
 
+
+  <!-- =============== Robot base Link & Joint =============== -->
+
     <link name="base_footprint">
 
     </link>
@@ -21,7 +24,6 @@
     <link name="base_floor">
         <visual>
             <geometry>
-                <!--<box size="0.600 0.400 0.050"/>-->
                 <mesh filename="file://$(find kuams_sim)/meshes/KUAMS_ver.5.1.0.dae" />
             </geometry>
             <material name="grey">
@@ -31,7 +33,6 @@
 
         <collision>
             <geometry>
-                <!--<box size="0.600 0.400 0.050"/>-->
                 <mesh filename="file://$(find kuams_sim)/meshes/KUAMS_ver.5.1.0.dae" />
             </geometry>
         </collision>
@@ -87,22 +88,37 @@
 	<xacro:wheel_macro prefix="frontwheel_right" parent="base_floor" xyz="0.3 0.245 0" rpy="1.57 0 0" axis="0 0 -1" radius="0.1325" length="0.05" mu1="0.0" mu2="1.0"/>
 	<xacro:wheel_macro prefix="frontwheel_left" parent="base_floor" xyz="0.3 -0.245 0" rpy="1.57 0 0" axis="0 0 1" radius="0.1325" length="0.05" mu1="0.0" mu2="1.0"/>
 
+
+  <!-- =============== Sensor Link & Joint =============== -->
+
     <!-- センサーの取り付け位置 -->
-    <link name="sensor_link">
+    <link name="rear_sensor_link">
     </link>
 
-    <joint name="base_sensor_joint" type="fixed">
+    <joint name="base_rear_sensor_joint" type="fixed">
         <origin rpy="0 0 0" xyz="0.1 0 0.8"/>
         <parent link="base_link"/>
-        <child link="sensor_link"/>
+        <child link="rear_sensor_link"/>
     </joint>
 
-    <!--LRFの位置-->
-	<!-- <xacro:laser_macro prefix="laser" parent="sensor_arm_link" xyz="0.0 0 0.5" rpy="0 0 0" topic="/scan" visualize="True"/> -->
+    <link name="front_sensor_link">
+    </link>
 
-    <!-- 3D LRF -->
+    <joint name="base_front_sensor_joint" type="fixed">
+        <origin rpy="3.1415926535 0 0" xyz="0.5 0 0.3"/>
+        <parent link="base_link"/>
+        <child link="front_sensor_link"/>
+    </joint>
+
+
+  <!-- =============== Sensors =============== -->
+
+    <!--LRF-->
+	<xacro:laser_macro prefix="laser" parent="front_sensor_link" xyz="0.0 0 0.0" rpy="0 0 0" topic="/scan" visualize="True"/>
+
+    <!-- Velodyne VLP-16 -->
     <xacro:include filename="$(find velodyne_description)/urdf/VLP-16.urdf.xacro"/>
-    <xacro:VLP-16 parent="sensor_link" name="velodyne" topic="/velodyne_points" hz="10" samples="440" gpu="true">
+    <xacro:VLP-16 parent="rear_sensor_link" name="velodyne" topic="/velodyne_points" hz="10" samples="440" gpu="true">
         <origin xyz="0.075 0 0.01" rpy="0 0 0" />
     </xacro:VLP-16>
 
@@ -113,6 +129,9 @@
 		<mu1>0.0</mu1>
 		<mu2>0.0</mu2>
 	</gazebo>
+
+
+  <!-- =============== Gazebo plugin =============== -->
 
 	<!--プラグインの設定-->
 	<gazebo>
