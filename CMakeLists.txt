@@ -23,7 +23,7 @@ find_package(sensor_msgs REQUIRED)
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
-install(DIRECTORY launch meshes rviz worlds xacro
+install(DIRECTORY launch meshes rviz worlds xacro config
   DESTINATION share/${PROJECT_NAME})
 
 if(BUILD_TESTING)
