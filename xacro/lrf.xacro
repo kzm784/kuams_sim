@@ -35,8 +35,8 @@
 					<samples>1080</samples>
 					<resolution>1</resolution>
 					<!--角度範囲-->
-					<min_angle>${radians(-135)}</min_angle>
-					<max_angle>${radians(135)}</max_angle>
+					<min_angle>${radians(-120)}</min_angle>
+					<max_angle>${radians(120)}</max_angle>
 					</horizontal>
 				</scan>
 				<range>
