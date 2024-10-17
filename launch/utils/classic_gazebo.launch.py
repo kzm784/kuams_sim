@@ -32,7 +32,7 @@ def generate_launch_description():
             pathsep,
             '/usr/share/gazebo-11',
             pathsep,
-            PathJoinSubstitution([pkg_kuams_sim, 'worlds', 'classic'])]
+            PathJoinSubstitution([pkg_kuams_sim, 'worlds'])]
     )
 
     gazebo = IncludeLaunchDescription(
@@ -61,7 +61,7 @@ def generate_launch_description():
                 '-entity', 'vkuams',
                 '-x', '0',
                 '-y', '0',
-                '-z', '0.5',
+                '-z', '0.3',
                 '-topic', 'robot_description',
         ]
     )
